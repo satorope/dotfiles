@@ -1,0 +1,14 @@
+[credential]
+	helper = manager-core
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[user]
+	name = satorope
+	email = 40160099+satorope@users.noreply.github.com
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

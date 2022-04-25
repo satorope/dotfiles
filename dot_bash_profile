@@ -1,0 +1,11 @@
+# 自分好みのコマンドエイリアス
+alias ls='ls --color=auto --show-control-chars --time-style=long-iso --human-readable --classify'
+alias ll='ls -l'                        # long list
+alias la='ls -A'                        # all but . and ..
+alias grep='grep --color'               # show differences in colour
+alias less='less --raw-control-chars'   # raw control characters
+alias whence='type -a'                  # where, of a sort
+
+# Miniconda/Anacondaの設定
+#. 'C:/ProgramData/Anaconda3/etc/profile.d/conda.sh' # Anaconda3ならこちら
+. '/c/ProgramData/Miniconda3/etc/profile.d/conda.sh' # Miniconda3ならこちら
