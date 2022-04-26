@@ -1,4 +1,5 @@
-﻿# Import the Chocolatey Profile that contains the necessary code to enable
+﻿#!/usr/bin/env pwsh
+# Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.
 # Be aware that if you are missing these lines from your profile, tab completion
 # for `choco` will not function.
@@ -28,6 +29,7 @@ Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
 # (optional) Ctrl+f 入力で前方1単語進む : 補完の確定に使う用
 Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
 
+Import-Module -Name Terminal-Icons
 
 # Oh My Posh
 oh-my-posh init pwsh | Invoke-Expression
