@@ -19,6 +19,18 @@ Get-ChildItem $psdir\autoload |
   Where-Object Extension -EQ ".ps1" |
   ForEach-Object { .$_.FullName }
 
+# PSReadLine
+Import-Module PSReadLine
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key Tab -Function Complete
+# Fish風のオートサジェスト機能を有効に
+# -PredictionViewStyle パラメーターで表示形式を指定
+Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
+# (optional) Ctrl+f 入力で前方1単語進む : 補完の確定に使う用
+Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
+
+
 # Oh My Posh
 oh-my-posh init pwsh | Invoke-Expression
 
