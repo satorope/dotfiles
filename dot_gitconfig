@@ -6,7 +6,7 @@
 	defaultBranch = main
 [user]
 	name = satorope
-	email = {{ .email }}
+	email = 40160099+satorope@users.noreply.github.com
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true

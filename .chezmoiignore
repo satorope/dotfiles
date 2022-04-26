@@ -2,4 +2,5 @@ README.md
 {{- if ne .chezmoi.os "windows" }}
 AppData
 Documents
+dot_cmdrc.cmd
 {{- end }}
