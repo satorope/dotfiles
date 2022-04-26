@@ -9,4 +9,10 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
+# Oh My Posh
+oh-my-posh init pwsh | Invoke-Expression
+
+Import-Module posh-git
+
+# Fast Node Manager (fnm)
 fnm env --use-on-cd | Out-String | Invoke-Expression
