@@ -12,9 +12,6 @@ if (Test-Path($ChocolateyProfile)) {
 
 # Import-Module
 Import-WslCommand "awk", "emacs", "nano", "vim"
-#Import-Module posh-git
-#Import-Module oh-my-posh
-#Set-PoshPrompt -Theme Paradox
 
 $psdir = "$env:OneDrive\PowerShell"
 Write-Host ("Load PS Profiles from {0}\autoload" -f $psdir) -ForegroundColor DarkCyan
@@ -22,5 +19,11 @@ Get-ChildItem $psdir\autoload |
   Where-Object Extension -EQ ".ps1" |
   ForEach-Object { .$_.FullName }
 
+# Oh My Posh
+oh-my-posh init pwsh | Invoke-Expression
+
+Import-Module posh-git
+
 # Fast Node Manager (fnm)
 fnm env --use-on-cd | Out-String | Invoke-Expression
+
