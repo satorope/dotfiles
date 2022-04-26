@@ -1,9 +1,15 @@
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
 encryption = "age"
+
+[age]
+    identity = "C:\Users\tsuna\key.txt"
+    recipient = "age1x7feqm2lx9v0d6d0f02z9mpg22hv4rnrluqsexq79ysrnfj4md2s0asc7e"
+[data]
+    email = "40160099+satorope@users.noreply.github.com"
+    osid = {{ $osid | quote }}
 [git]
     autoCommit = true
     autoPush = true
-[data]
-    email = "40160099+satorope@users.noreply.github.com"
-[age]
-    identity = "~/key.txt"
-    recipient = "age1x7feqm2lx9v0d6d0f02z9mpg22hv4rnrluqsexq79ysrnfj4md2s0asc7e"

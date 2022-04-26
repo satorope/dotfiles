@@ -1,6 +1,12 @@
 README.md
+key.txt.age
 {{- if ne .chezmoi.os "windows" }}
 AppData
 Documents
 dot_cmdrc.cmd
 {{- end }}
+{{ if eq .chezmoi.os "linux" }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+# WSL-specific code
+{{   end }}
+{{ end }}
