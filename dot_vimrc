@@ -39,4 +39,5 @@ function MyDiff()
   endif
 endfunction
 
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
 set number
