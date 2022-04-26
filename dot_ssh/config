@@ -1,0 +1,54 @@
+# お好みで
+# LogLevel DEBUG
+# LogLevel VERBOSE
+
+##### 接続系 #####
+# 圧縮。gitなどのファイル転送にも適用される、テキストやプログラムファイル多ければON
+# 圧縮しづらいファイル転送や、tmux使うときは圧縮率が低いのでOFFでも可
+Compression yes
+
+# ネットワークコネクティビティを15秒ごとにチェック
+# 3回失敗で切断
+ServerAliveInterval 60
+ServerAliveCountMax 3
+
+# フォワーディング失敗時にExitするかどうか
+# VPN代わりのトンネルを張り続けたいときに便利
+# ExitOnForwardFailure yes
+
+# 接続試行回数
+ConnectionAttempts 3
+
+##### コントロールマスター接続で永続化するかどうか #####
+# 何度も接続したり、複数コネクションを張る場合、既存接続が再利用され、
+# SSHの開始が高速になります
+# ノートPCなどネットワークの場所移動が多い場合は ControlPersist を数分単位の短めにしてください
+# ControlMaster auto
+# ControlPersist 2h
+# ControlPath ~/.ssh/%C
+
+##### セキュリティ系！重要！！ #####
+# 以下は、OpenSSH 6.8を参考にしたもの。 
+# あなたのCPU、接続先のサーバーがAES-NIに対応していなければ、 chacha20-poly1305@openssh.com を優先してみてください
+Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+
+# 鍵交換アルゴリズム、楕円曲線がナウくておしゃれ。あとは強度の順
+KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group18-sha512,diffie-hellman-group16-sha512,diffie-hellman-group14-sha256,diffie-hellman-group-exchange-sha256
+
+# 鍵付きハッシュのアルゴリズム
+Macs umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-64-etm@openssh.com,umac-64@openssh.com,hmac-sha1
+
+# ホスト鍵をモダンな順で検証
+HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp521-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp384,ecdsa-sha2-nistp256,ssh-rsa-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-256,ssh-rsa
+
+# 鍵生成の頻度！あまり小さくするとパフォーマンスに影響。
+# 第一引数は何バイトごとか、第二引数は鍵交換までの秒数
+RekeyLimit default 600
+
+# おまけ、ホストフィンガープリントを視覚的に表示
+# VisualHostKey yes
+
+Host github github.com
+  HostName github.com
+  IdentityFile ~/.ssh/id_github_ed25519
+  User git
