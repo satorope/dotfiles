@@ -6,10 +6,14 @@ encryption = "age"
 
 [age]
     identity = "~/key.txt"
-    recipient = "age1x7feqm2lx9v0d6d0f02z9mpg22hv4rnrluqsexq79ysrnfj4md2s0asc7e"
+    recipient = "age1v2s2ae388r6h4dj5knf2ps6l3pp9cxzmu863u3zkxylgkga6n30q9ac7xy"
 [data]
     email = "40160099+satorope@users.noreply.github.com"
     osid = {{ $osid | quote }}
+{{ if eq .chezmoi.os "windows" -}}
+[edit]
+    command = "C:/Program Files/Notepad++/notepad++.exe"
+{{ end -}}
 [git]
     autoCommit = true
     autoPush = true
