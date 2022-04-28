@@ -10,7 +10,10 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # Import-Module
-Import-WslCommand "awk", "emacs", "nano", "vim"
+Import-WslCommand "awk", "grep", "head", "less", "man", "sed", "seq", "tail"
+$WslDefaultParameterValues["grep"] = "-E"
+$WslDefaultParameterValues["grep"] = "-E"
+
 
 $psdir = "$env:OneDrive\PowerShell"
 Write-Host ("Load PS Profiles from {0}\autoload" -f $psdir) -ForegroundColor DarkCyan
