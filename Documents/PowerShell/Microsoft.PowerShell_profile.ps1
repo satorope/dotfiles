@@ -6,7 +6,7 @@
 # See https://ch0.co/tab-completion for details.
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
+    Import-Module "$ChocolateyProfile"
 }
 
 #$psdir = "$env:OneDrive\PowerShell"
@@ -16,11 +16,11 @@ if (Test-Path($ChocolateyProfile)) {
 #  ForEach-Object { .$_.FullName }
 
 function which($cmdname) {
-  Get-Command $cmdname -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
+    Get-Command $cmdname -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
 }
 
 Import-Module PSReadLine
-Import-WslCommand "awk", "grep", "head", "less", "man", "sed", "seq", "tail"
+#Import-WslCommand "awk", "grep", "head", "less", "man", "sed", "seq", "tail"
 Import-Module -Name Terminal-Icons
 Import-Module posh-git
 
@@ -34,13 +34,8 @@ Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
 # (optional) Ctrl+f 入力で前方1単語進む : 補完の確定に使う用
 Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
 
-# WslInterop
-#$WslDefaultParameterValues["less"] = "-r"
-#$WslDefaultParameterValues["grep"] = "--color"
-
 # Oh My Posh
 oh-my-posh init pwsh | Invoke-Expression
 
 # Fast Node Manager (fnm)
 fnm env --use-on-cd | Out-String | Invoke-Expression
-
