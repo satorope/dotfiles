@@ -12,7 +12,8 @@ encryption = "age"
     osid = {{ $osid | quote }}
 {{ if eq .chezmoi.os "windows" -}}
 [edit]
-    command = "C:/Program Files/Notepad++/notepad++.exe"
+    command = "code"
+    args = ["--wait"]
 {{ end -}}
 [git]
     autoCommit = true
