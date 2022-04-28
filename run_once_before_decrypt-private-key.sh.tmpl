@@ -1,7 +1,4 @@
-{{ if eq .chezmoi.os "windows" -}}
-#!/bin/sh
-{{ else if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env sh
 if [ ! -f "${HOME}/key.txt" ]; then
     age --decrypt --output "${HOME}/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
     chmod 600 "${HOME}/key.txt"
-{{ end -}}
