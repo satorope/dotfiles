@@ -9,20 +9,22 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-# Import-Module
+#$psdir = "$env:OneDrive\PowerShell"
+#Write-Host ("Load PS Profiles from {0}\autoload" -f $psdir) -ForegroundColor DarkCyan
+#Get-ChildItem $psdir\autoload |
+#  Where-Object Extension -EQ ".ps1" |
+#  ForEach-Object { .$_.FullName }
+
+function which($cmdname) {
+  Get-Command $cmdname -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
+}
+
+Import-Module PSReadLine
 Import-WslCommand "awk", "grep", "head", "less", "man", "sed", "seq", "tail"
-$WslDefaultParameterValues["grep"] = "-E"
-$WslDefaultParameterValues["grep"] = "-E"
-
-
-$psdir = "$env:OneDrive\PowerShell"
-Write-Host ("Load PS Profiles from {0}\autoload" -f $psdir) -ForegroundColor DarkCyan
-Get-ChildItem $psdir\autoload |
-  Where-Object Extension -EQ ".ps1" |
-  ForEach-Object { .$_.FullName }
+Import-Module -Name Terminal-Icons
+Import-Module posh-git
 
 # PSReadLine
-Import-Module PSReadLine
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Tab -Function Complete
@@ -32,12 +34,12 @@ Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
 # (optional) Ctrl+f 入力で前方1単語進む : 補完の確定に使う用
 Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
 
-Import-Module -Name Terminal-Icons
+# WslInterop
+$WslDefaultParameterValues["less"] = "-r"
+$WslDefaultParameterValues["grep"] = "--color"
 
 # Oh My Posh
 oh-my-posh init pwsh | Invoke-Expression
-
-Import-Module posh-git
 
 # Fast Node Manager (fnm)
 fnm env --use-on-cd | Out-String | Invoke-Expression
