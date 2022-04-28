@@ -35,8 +35,8 @@ Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
 Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
 
 # WslInterop
-$WslDefaultParameterValues["less"] = "-r"
-$WslDefaultParameterValues["grep"] = "--color"
+#$WslDefaultParameterValues["less"] = "-r"
+#$WslDefaultParameterValues["grep"] = "--color"
 
 # Oh My Posh
 oh-my-posh init pwsh | Invoke-Expression
