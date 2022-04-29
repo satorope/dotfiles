@@ -20,7 +20,6 @@ function which($cmdname) {
 }
 
 Import-Module PSReadLine
-#Import-WslCommand "awk", "grep", "head", "less", "man", "sed", "seq", "tail"
 Import-Module -Name Terminal-Icons
 Import-Module posh-git
 
@@ -36,6 +35,7 @@ Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
 
 # Oh My Posh
 oh-my-posh init pwsh | Invoke-Expression
+#oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\dracula.omp.json" | Invoke-Expression
 
 # Fast Node Manager (fnm)
 fnm env --use-on-cd | Out-String | Invoke-Expression
