@@ -1,16 +1,5 @@
-[credential]
-	helper = manager-core
-[pull]
-	ff = only
 [init]
-	defaultBranch = main
+	defaultbranch = master
 [user]
 	name = satorope
 	email = 40160099+satorope@users.noreply.github.com
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-[credential "helperselector"]
-	selected = manager-core
