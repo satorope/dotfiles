@@ -1,5 +1,7 @@
+[core]
+	autocrlf = false
 [init]
-	defaultbranch = master
+	defaultbranch = main
 [user]
 	name = satorope
 	email = 40160099+satorope@users.noreply.github.com
