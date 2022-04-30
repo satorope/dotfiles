@@ -24,8 +24,7 @@ Import-Module Terminal-Icons
 Import-Module posh-git
 Import-Module 'C:\Program Files (x86)\gsudo\gsudoModule.psd1'
 
-oh-my-posh init pwsh | Invoke-Expression
-#oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\dracula.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\dracula.omp.json" | Invoke-Expression
 fnm env --use-on-cd | Out-String | Invoke-Expression
 
 # PSReadLine
