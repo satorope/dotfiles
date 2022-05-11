@@ -1,2 +1,4 @@
 channels:
   - conda-forge
+  - default
+channel_priority: strict

@@ -5,6 +5,7 @@ AppData
 Documents
 dot_cmdrc.cmd
 install_windows.ps1
+config.xlaunch
 {{- else }}
 install_homebrew.sh
 {{- end }}
