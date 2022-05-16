@@ -20,7 +20,6 @@ function which($cmdname) {
 }
 
 Import-Module PSReadLine
-Import-Module Terminal-Icons
 Import-Module posh-git
 Import-Module 'C:\Program Files (x86)\gsudo\gsudoModule.psd1'
 
