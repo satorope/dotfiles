@@ -23,9 +23,6 @@ Import-Module PSReadLine
 Import-Module posh-git
 Import-Module 'C:\Program Files (x86)\gsudo\gsudoModule.psd1'
 
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\default.omp.json" | Invoke-Expression
-fnm env --use-on-cd | Out-String | Invoke-Expression
-
 # PSReadLine
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
@@ -35,3 +32,6 @@ Set-PSReadLineKeyHandler -Key Tab -Function Complete
 Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
 # (optional) Ctrl+f 入力で前方1単語進む : 補完の確定に使う用
 Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
+
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\default.omp.json" | Invoke-Expression
+fnm env --use-on-cd | Out-String | Invoke-Expression
